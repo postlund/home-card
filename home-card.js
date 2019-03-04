@@ -124,6 +124,14 @@ class HomeCard extends LitElement {
   }
 
   render() {
+    if (this.config.background == 'paper-card') {
+      return html `<ha-card>${this.make_content()}</ha-card>`;
+    }
+
+    return this.make_content();
+  }
+
+  make_content() {
     var weatherObj = this.hass.states[this.config.weather];
     return html `
             <div id="root">
