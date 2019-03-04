@@ -18,7 +18,6 @@ A quick glance of the state of your home in [Home Assistant](https://github.com/
 
 Some things I want to add in upcoming releases:
 
-* Much better error handling, especially for misspelled entity_ids
 * Custom tap and hold actions, like in the stock entity-button card
 * More house types and better graphics
 * Extend with additional overlays for things like alarm, people and doors
@@ -254,7 +253,7 @@ Some notes here:
 
 ## Getting errors?
 
-Clear the browser cache, restart Home Assistant and make sure the configuration is correct (currently the card does not give proper error messages if you misspell an entity name in most places).
+Clear the browser cache, restart Home Assistant and make sure the configuration is correct.
 
 If you believe you have found an error, please write an issue.
 

@@ -124,15 +124,25 @@ class HomeCard extends LitElement {
   }
 
   render() {
-    if (this.config.background == 'paper-card') {
-      return html `<ha-card>${this.make_content()}</ha-card>`;
-    }
+    try {
+      if (this.config.background == 'paper-card') {
+        return html `<ha-card>${this.make_content()}</ha-card>`;
+      }
 
-    return this.make_content();
+      return this.make_content();
+    } catch (error) {
+      return html `
+              <ha-card>
+                <div class="error-message">
+                  ${error}
+                </div>
+              </ha-card>
+        `;
+    }
   }
 
   make_content() {
-    var weatherObj = this.hass.states[this.config.weather];
+    var weatherObj = this.stateObject('weather', this.config.weather);
     return html `
             <div id="root">
               ${this.config.weather ?
@@ -158,7 +168,7 @@ class HomeCard extends LitElement {
   }
 
   make_resource(resource) {
-    var stateObj = this.hass.states[resource.entity];
+    var stateObj = this.stateObject('resources', resource.entity);
     return html `
             <span @click="${ev => this.more_info(resource.entity)}">
               <span class="icon">
@@ -192,10 +202,7 @@ class HomeCard extends LitElement {
         throw Error('Unsupported entity type: ' + entity.type);
       }
 
-      var stateObj = this.hass.states[entity.entity];
-      if (!stateObj) {
-        throw Error('Entity does not exist: ' + entity.entity);
-      }
+      var stateObj = this.stateObject('entities', entity.entity);
 
       var state = stateObj.state;
       if (entity.state_map && stateObj.state in entity.state_map) {
@@ -231,6 +238,19 @@ class HomeCard extends LitElement {
 
   imgPath(filename) {
     return `/local/home-card/themes/${this.config.theme}/${filename}?v=${VERSION}`;
+  }
+
+  stateObject(source, entity_id) {
+    if (!entity_id) {
+      throw Error(`Empty entity id specified in ${source}`);
+    }
+
+    var stateObj = this.hass.states[entity_id];
+    if (!stateObj) {
+      throw Error(`The entity "${entity_id}" does not exist (${source})`)
+    }
+
+    return stateObj;
   }
 
   static get styles() {
@@ -291,6 +311,11 @@ class HomeCard extends LitElement {
         position: relative;
         text-align: center;
         width: 40px;
+      }
+      .error-message {
+        flex: 1;
+        background-color: yellow;
+        padding: 1em;
       }
   `;
   }
