@@ -11,6 +11,7 @@ A quick glance of the state of your home in [Home Assistant](https://github.com/
 * Graphical representation of your house with different themes
 * Displays things such as weather, state of lights and garage door as well as arbitrary sensors
 * Create your own custom themes!
+* Transparent or regular paper card background
 * Othings small things...
 
 ## Roadmap
@@ -21,7 +22,6 @@ Some things I want to add in upcoming releases:
 * Custom tap and hold actions, like in the stock entity-button card
 * More house types and better graphics
 * Extend with additional overlays for things like alarm, people and doors
-* Option to add regular paper card background (i.e. not transparent)
 * More ways to customize how the card looks and feel
 * Extend or override existing themes using `custom_themes`
 * Lovelace UI editor
@@ -90,6 +90,7 @@ Both the weather and resources areas are optional and will not displayed if omit
 |------|------|---------|-------------|
 | type | string | **required** | `custom:home-card`
 | theme | string | **required** | Name of a theme, see [supported themes](#supported-themes)
+| background | string | transparent | Supported values: empty, `transparent`, `paper-card`
 | weather | string | optional | `weather` entity used for displaying location and temperature
 | entities | object | optional | List of [entity objects](#entity-object)
 | resources | object | optional | List of [resource objects](#resource-object)
