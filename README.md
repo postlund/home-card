@@ -4,12 +4,17 @@ A quick glance of the state of your home in [Home Assistant](https://github.com/
 
 ![Demo of card](images/demo.gif)
 
+Initial work on UI editor (only some options can be edited):
+
+![UI Editor](images/card-editor.png)
+
 *Note: This card is still in early development (preview/proof-of-concept), beware of bugs and lacking features!*
 
 ## Features
 
 * Graphical representation of your house with different themes
 * Displays things such as weather, state of lights and garage door as well as arbitrary sensors
+* Lovelace UI editor for some options (still early work)
 * Create your own custom themes!
 * Transparent or regular paper card background
 * Othings small things...
@@ -23,7 +28,7 @@ Some things I want to add in upcoming releases:
 * Extend with additional overlays for things like alarm, people and doors
 * More ways to customize how the card looks and feel
 * Extend or override existing themes using `custom_themes`
-* Lovelace UI editor
+* More improved Lovelace UI editor
 * Support for custom_updater
 * Better development environment with linting, etc.
 * Other cool things?
@@ -32,7 +37,7 @@ Some things I want to add in upcoming releases:
 
 ### Simple Install
 
-1. Download `home-card.js` and `themes` and copy them into `config/www/home-card` (create the `home-card` directory)
+1. Download `home-card.js`, `themes.js` and `themes` and copy them into `config/www/home-card` (create the `home-card` directory)
 
 2. Add a reference to `home-card/home-card.js` inside your `ui-lovelace.yaml`
 
