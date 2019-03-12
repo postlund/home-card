@@ -2,6 +2,20 @@ export const THEMES = {
   'two_story_with_garage': {
     'house': 'house.png',
     'overlays': {
+      'door': {
+        'on': [
+          {
+            'image': 'door-close.png',
+            'style': { 'width': '10%', 'left': '39%', 'top': '80.5%', 'z-index': '10'},
+          }
+        ],
+        'off': [
+          {
+            'image': 'door-open.png',
+            'style': { 'width': '10%', 'left': '39%', 'top': '80.5%', 'z-index': '10'},
+          },
+        ],
+      },
       'garage': {
         'open': [
           {
@@ -13,6 +27,36 @@ export const THEMES = {
           {
           'image': 'garage-close.png',
           'style': { 'width': '24%', 'left': '74%', 'top': '80%', 'z-index': '10' },
+          },
+        ],
+      },
+      'outside_light': {
+        'on': [
+          {
+            'image': 'outside-light-on.png',
+            'style': { 'width': '9%', 'left': '8%', 'top': '92%', 'z-index': '10' },
+          },
+          {
+            'image': 'outside-light-on.png',
+            'style': { 'width': '9%', 'left': '56%', 'top': '92%', 'z-index': '10' },
+          },
+          {
+            'image': 'outside-light-on.png',
+            'style': { 'width': '9%', 'left': '94%', 'top': '92%', 'z-index': '10' },
+          },
+        ],
+        'off': [
+          {
+            'image': 'outside-light-off.png',
+            'style': { 'width': '9%', 'left': '8%', 'top': '92%', 'z-index': '10' },
+          },
+          {
+            'image': 'outside-light-off.png',
+            'style': { 'width': '9%', 'left': '56%', 'top': '92%', 'z-index': '10' },
+          },
+          {
+            'image': 'outside-light-off.png',
+            'style': { 'width': '9%', 'left': '94%', 'top': '92%', 'z-index': '10' },
           },
         ],
       },
