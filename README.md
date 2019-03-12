@@ -106,15 +106,17 @@ The following themes and overlays are currently supported:
 
 | Theme | Overlays |
 |------|----------|
-| two_story_with_garage | garage, upstairs_light, downstairs_light, car
+| two_story_with_garage | door, garage, outside_light, upstairs_light, downstairs_light, car
 
 These states are supported by the overlays:
 
 | Overlay | States | Component examples |
 |---------|--------|-----------------------|
 | car | home, not_home | device_tracker
+| door | on, off | E.g. binary_sensor, switch
 | downstairs_lights | on, off | E.g. light, binary_sensor
 | garage | open, closed | cover
+| outside_light | on, off | E.g. light, binary_sensor
 | upstairs_lights | on, off | E.g. light, binary_sensor
 
 You may add additional state mappings using a `state_map` to support other component types, see [Entity object](#entity-object).
