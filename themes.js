@@ -1,6 +1,21 @@
 export const THEMES = {
   'two_story_with_garage': {
     'house': 'house.png',
+    'overlay_actions': {
+      '*': {
+        'tap_action': {
+          'action': 'toggle',
+        },
+        'hold_action': {
+          'action': 'more-info',
+        },
+      },
+      'car': {
+        'tap_action': {
+          'action': 'more-info',
+        },
+      }
+    },
     'overlays': {
       'door': {
         'on': [
