@@ -27,7 +27,9 @@ class HomeCard extends LitElement {
   static get properties() {
     return {
       config: {},
-      hass: {}
+      hass: {},
+      held: false,
+      timer: {},
     };
   }
 
@@ -37,7 +39,10 @@ class HomeCard extends LitElement {
   }
 
   static getStubConfig() {
-    return {};
+    return {
+      tap_action: { action: "more-info" },
+      hold_action: { action: "none" },
+    };
   }
 
   setConfig(config) {
@@ -107,7 +112,9 @@ class HomeCard extends LitElement {
   make_resource(resource) {
     var stateObj = this.stateObject('resources', resource.entity);
     return html `
-            <span @click="${ev => this.more_info(resource.entity)}">
+            <span @mousedown="${ev => this._down(resource)}"
+                  @touchstart="${ev => this._down(resource)}"
+                  @mouseup="${ev => this._up(resource, false)}">
               <span class="icon">
                 <ha-icon icon="${resource.icon || this.get_attribute(stateObj, 'icon', 'mdi:help-rhombus')}" />
               </span>
@@ -151,7 +158,7 @@ class HomeCard extends LitElement {
         for (var i = 0; i < overlay.length; ++i) {
           var imageName = entity.type + '_' + stateObj.state + '_' + i;
           to_add.push(this.create_overlay(
-            imageName, overlay[i].image, overlay[i].style, entity.entity));
+            imageName, overlay[i].image, overlay[i].style, entity));
         }
       }
     });
@@ -165,12 +172,10 @@ class HomeCard extends LitElement {
                  src="${this.imgPath(imageFile)}"
                  class="element"
                  style="${styleString}"
-                 @click="${ev => this.toggle(entity)}" />
+                 @mousedown="${ev => this._down(entity)}"
+                 @touchstart="${ev => this._down(entity)}"
+                 @mouseup="${ev => this._up(entity, true)}" />
     `
-  }
-
-  toggle(entity_id) {
-    this.hass.callService('homeassistant', 'toggle', { entity_id: entity_id });
   }
 
   imgPath(filename) {
@@ -188,6 +193,97 @@ class HomeCard extends LitElement {
     }
 
     return stateObj;
+  }
+
+  // The function contains so much magic...
+  get_entity_action(config, action) {
+    // If action is specified for this entity, use that
+    if (config[action]) {
+      return config[action];
+    }
+
+    // If no action is specified, use theme defined action
+    if (this.theme.overlay_actions) {
+      var overlayActions = this.theme.overlay_actions;
+
+      // First check for specific overlay in theme
+      if (overlayActions[config.type] && overlayActions[config.type][action]) {
+        return overlayActions[config.type][action];
+      }
+
+      // Next check default for all overlays in theme
+      if (overlayActions['*'] && overlayActions['*'][action]) {
+        return overlayActions['*'][action];
+      }
+    }
+
+    // If no theme action, fallback to default action
+    return { action: 'more-info', };
+  }
+
+  // Tap/hold for resources are hardcoded to more-info for now (maybe configurable in the future)
+  get_resource_action(action) {
+    return { 'action':  'more-info'};
+  }
+
+  handleClick(config, actionConfig) {
+    switch (actionConfig.action) {
+      case "more-info":
+        if (config.entity || config.camera_image) {
+          fireEvent(this, "hass-more-info", {
+            entityId: config.entity ? config.entity : config.camera_image,
+          });
+        }
+        break;
+      case "navigate":
+        if (actionConfig.navigation_path) {
+          history.pushState(null, "", actionConfig.navigation_path);
+          fireEvent(window, "location-changed");
+        }
+        break;
+      case "toggle":
+        if (!config.entity) {
+          return;
+        }
+
+        if (config.entity.startsWith("cover.")) {
+          var coverState = this.hass.states[config.entity].state;
+          this.hass.callService('cover',
+                               coverState == 'open' ? 'close_cover' : 'open_cover',
+                               {'entity_id': config.entity});
+        } else {
+          this.hass.callService('homeassistant', 'toggle', {'entity_id': config.entity});
+        }
+        break;
+      case "call-service": {
+        if (actionConfig.service) {
+          const [domain, service] = actionConfig.service.split(".", 2);
+          this.hass.callService(domain, service, actionConfig.service_data);
+        }
+      }
+    }
+  }
+
+  _down(config) {
+    if (!this.timer) {
+      this.timer = window.setTimeout(() => { this.held = true; }, 500);
+      this.held = false;
+    }
+  }
+
+  _up(config, is_overlay) {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = undefined;
+
+      let actionConfig = undefined;
+      if (is_overlay) {
+        actionConfig = this.get_entity_action(config, this.held ? 'hold_action' : 'tap_action');
+      } else {
+        actionConfig = this.get_resource_action(this.held ? 'hold_action' : 'tap_action')
+      }
+      this.handleClick(config, actionConfig);
+    }
   }
 
   static get styles() {
