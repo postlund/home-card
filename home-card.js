@@ -331,6 +331,10 @@ class HomeCard extends LitElement {
         height: 100%;
         position: relative;
         margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-auto-rows: 20px;
+        grid-gap: 5px;
       }
       .element {
         position: absolute;
