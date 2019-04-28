@@ -84,20 +84,23 @@ class HomeCard extends LitElement {
   }
 
   make_content() {
-    var weatherObj = this.stateObject('weather', this.config.weather);
+    var weather = "";
+
+    if (this.config.weather) {
+      var weatherObj = this.stateObject('weather', this.config.weather);
+      weather = html `
+                 <div id="weather">
+                   <img id="weather-icon" src="${this.imgPath("weather-" + weatherObj.state + ".png")}" />
+                   <span id="weather-info">
+                     ${weatherObj.attributes.friendly_name}
+                     ${weatherObj.attributes.temperature}${this.hass.config.unit_system.temperature}
+                   </span>
+                  </div>`;
+    }
+
     return html `
             <div id="root">
-              ${this.config.weather ?
-                html `
-                <div id="weather">
-                  <img id="weather-icon" src="${this.imgPath("weather-" + weatherObj.state + ".png")}" /> 
-                  <span id="weather-info">
-                    ${weatherObj.attributes.friendly_name} 
-                    ${weatherObj.attributes.temperature}${this.hass.config.unit_system.temperature}
-                  </span>
-                </div>`
-                : ""
-              }
+              ${weather}
               <div id="house">
                 <img id="house-image" src="${this.imgPath(this.theme.house)}" />
                 ${this.make_entities()}
