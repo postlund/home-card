@@ -85,6 +85,7 @@ class HomeCard extends LitElement {
 
   make_content() {
     var weather = "";
+    var resources = "";
 
     if (this.config.weather) {
       var weatherObj = this.stateObject('weather', this.config.weather);
@@ -98,6 +99,13 @@ class HomeCard extends LitElement {
                   </div>`;
     }
 
+    if (this.config.resources) {
+	resources = html `
+                     <div id="resource-usage">
+                       ${this.config.resources.map(resource => this.make_resource(resource))}
+                    </div>`;
+    }
+
     return html `
             <div id="root">
               ${weather}
@@ -105,9 +113,7 @@ class HomeCard extends LitElement {
                 <img id="house-image" src="${this.imgPath(this.theme.house)}" />
                 ${this.make_entities()}
               </div>
-              <div id="resource-usage">
-                ${this.config.resources.map(resource => this.make_resource(resource))}
-              </div>
+              ${resources}
             </div>
       `;
   }
