@@ -14,20 +14,25 @@ export const THEMES = {
         'tap_action': {
           'action': 'more-info',
         },
-      }
+      },
+      'sprinkler': {
+        'tap_action': {
+          'action': 'more-info',
+        },
+      },
     },
     'overlays': {
       'door': {
         'on': [
           {
             'image': 'door-close.png',
-            'style': { 'width': '10%', 'left': '39%', 'top': '80.5%', 'z-index': '10'},
+            'style': { 'width': '8%', 'left': '40%', 'top': '68.5%', 'z-index': '10'},
           }
         ],
         'off': [
           {
             'image': 'door-open.png',
-            'style': { 'width': '10%', 'left': '39%', 'top': '80.5%', 'z-index': '10'},
+            'style': { 'width': '8%', 'left': '40%', 'top': '68.5%', 'z-index': '10'},
           },
         ],
       },
@@ -35,13 +40,13 @@ export const THEMES = {
         'open': [
           {
             'image': 'garage-open.png',
-            'style': { 'width': '24%', 'left': '74%', 'top': '80%', 'z-index': '10' },
+            'style': { 'width': '21%', 'left': '73.5%', 'top': '67.5%', 'z-index': '10' },
           },
         ],
         'closed': [
           {
           'image': 'garage-close.png',
-          'style': { 'width': '24%', 'left': '74%', 'top': '80%', 'z-index': '10' },
+          'style': { 'width': '21%', 'left': '73.5%', 'top': '67.5%', 'z-index': '10' },
           },
         ],
       },
@@ -49,29 +54,29 @@ export const THEMES = {
         'on': [
           {
             'image': 'outside-light-on.png',
-            'style': { 'width': '9%', 'left': '8%', 'top': '92%', 'z-index': '10' },
+            'style': { 'width': '8%', 'left': '10%', 'top': '77%', 'z-index': '10' },
           },
           {
             'image': 'outside-light-on.png',
-            'style': { 'width': '9%', 'left': '56%', 'top': '92%', 'z-index': '10' },
+            'style': { 'width': '8%', 'left': '56%', 'top': '77%', 'z-index': '10' },
           },
           {
             'image': 'outside-light-on.png',
-            'style': { 'width': '9%', 'left': '94%', 'top': '92%', 'z-index': '10' },
+            'style': { 'width': '8%', 'left': '91%', 'top': '77%', 'z-index': '10' },
           },
         ],
         'off': [
           {
             'image': 'outside-light-off.png',
-            'style': { 'width': '9%', 'left': '8%', 'top': '92%', 'z-index': '10' },
+            'style': { 'width': '8%', 'left': '10%', 'top': '77%', 'z-index': '10' },
           },
           {
             'image': 'outside-light-off.png',
-            'style': { 'width': '9%', 'left': '56%', 'top': '92%', 'z-index': '10' },
+            'style': { 'width': '8%', 'left': '56%', 'top': '77%', 'z-index': '10' },
           },
           {
             'image': 'outside-light-off.png',
-            'style': { 'width': '9%', 'left': '94%', 'top': '92%', 'z-index': '10' },
+            'style': { 'width': '8%', 'left': '91%', 'top': '77%', 'z-index': '10' },
           },
         ],
       },
@@ -79,29 +84,29 @@ export const THEMES = {
         'on': [
           {
             'image': 'window-light.png',
-            'style': { 'width': '6.5%', 'left': '56%', 'top': '73%', 'z-index': '10' },
+            'style': { 'width': '6%', 'left': '56%', 'top': '61%', 'z-index': '10' },
           },
           {
             'image': 'window-light.png',
-            'style': { 'width': '6.5%', 'left': '16%', 'top': '73%', 'z-index': '10' },
+            'style': { 'width': '6%', 'left': '17%', 'top': '61%', 'z-index': '10' },
           },
           {
             'image': 'window-light.png',
-            'style': { 'width': '6.5%', 'left': '24%', 'top': '73%', 'z-index': '10' },
+            'style': { 'width': '6%', 'left': '25%', 'top': '61%', 'z-index': '10' },
           },
         ],
         'off': [
           {
             'image': 'window-dark.png',
-            'style': { 'width': '6.5%', 'left': '56%', 'top': '73%', 'z-index': '10' },
+            'style': { 'width': '6%', 'left': '56%', 'top': '61%', 'z-index': '10' },
           },
           {
             'image': 'window-dark.png',
-            'style': { 'width': '6.5%', 'left': '16%', 'top': '73%', 'z-index': '10' },
+            'style': { 'width': '6%', 'left': '17%', 'top': '61%', 'z-index': '10' },
           },
           {
             'image': 'window-dark.png',
-            'style': { 'width': '6.5%', 'left': '24%', 'top': '73%', 'z-index': '10' },
+            'style': { 'width': '6%', 'left': '25%', 'top': '61%', 'z-index': '10' },
           },
         ]
       },
@@ -109,13 +114,13 @@ export const THEMES = {
         'on': [
           {
             'image': 'window-light.png',
-            'style': { 'width': '7%', 'left': '32%', 'top': '30%', 'z-index': '10' },
+            'style': { 'width': '6%', 'left': '33%', 'top': '25%', 'z-index': '10' },
           },
         ],
         'off': [
           {
             'image': 'window-dark.png',
-            'style': { 'width': '7%', 'left': '32%', 'top': '30%', 'z-index': '10' },
+            'style': { 'width': '6%', 'left': '33%', 'top': '25%', 'z-index': '10' },
           },
         ]
       },
@@ -123,7 +128,29 @@ export const THEMES = {
         'home': [
           {
             'image': 'car.png',
-            'style': { 'width': '18%', 'left': '74%', 'top': '91%', 'z-index': '10' },
+            'style': { 'width': '18%', 'left': '73.5%', 'top': '85%', 'z-index': '10' },
+          },
+        ],
+      },
+      'sprinkler': {
+        'on': [
+          {
+            'image': 'sprinkler-on.png',
+            'style': { 'left': '23%', 'top': '86%', 'z-index': '10' },
+          },
+          {
+            'image': 'sprinkler-on.png',
+            'style': { 'left': '50%', 'top': '89%', 'z-index': '10' },
+          },
+        ],
+        'off': [
+          {
+            'image': 'sprinkler-off.png',
+            'style': { 'left': '23%', 'top': '86%', 'z-index': '10' },
+          },
+          {
+            'image': 'sprinkler-off.png',
+            'style': { 'left': '50%', 'top': '89%', 'z-index': '10' },
           },
         ],
       },

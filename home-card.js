@@ -6,7 +6,7 @@ const LitElement = Object.getPrototypeOf(
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
-const VERSION = 2;
+const VERSION = 3;
 
 // From weather-card
 const fireEvent = (node, type, detail, options) => {
