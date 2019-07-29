@@ -156,4 +156,193 @@ export const THEMES = {
       },
     },
   },
+  'ranch_with_three_stall_garage': {
+    'house': 'house.png',
+    'overlay_actions': {
+      '*': {
+        'tap_action': {
+          'action': 'toggle',
+        },
+        'hold_action': {
+          'action': 'more-info',
+        },
+      },
+      'car': {
+        'tap_action': {
+          'action': 'more-info',
+        },
+      },
+      'car2': {
+        'tap_action': {
+          'action': 'more-info',
+        },
+      },
+      'car3': {
+        'tap_action': {
+          'action': 'more-info',
+        },
+      },
+      'sprinkler': {
+        'tap_action': {
+          'action': 'more-info',
+        },
+      },
+    },
+    'overlays': {
+      'door': {
+        'on': [
+          {
+            'image': 'door-close.png',
+            'style': { 'width': '5.8%', 'left': '32.11%', 'top': '61%', 'z-index': '10'},
+          }
+        ],
+        'off': [
+          {
+            'image': 'door-open.png',
+            'style': { 'width': '5.8%', 'left': '32.11%', 'top': '61%', 'z-index': '10'},
+          },
+        ],
+      },
+      'garage': {
+        'open': [
+          {
+            'image': 'garage-open.png',
+            'style': { 'width': '23%', 'height': '34%', 'left': '61.2%', 'top': '57.5%', 'z-index': '10' },
+          },
+        ],
+        'closed': [
+          {
+          'image': 'garage-close.png',
+          'style': { 'width': '23%', 'height': '34%', 'left': '61.2%', 'top': '57.5%', 'z-index': '10' },
+          },
+        ],
+      },
+      'garage2': {
+        'open': [
+		  {
+            'image': 'garage-open.png',
+            'style': { 'width': '13%', 'height': '34%', 'left': '83.7%', 'top': '57.5%', 'z-index': '10', 'filter': 'contrast(80%)' },
+          }
+        ],
+        'closed': [
+		  {
+            'image': 'garage-close.png',
+            'style': { 'width': '13%', 'height': '34%', 'left': '83.7%', 'top': '57.5%', 'z-index': '10', 'filter': 'contrast(80%)' },
+          }
+        ],
+      },
+      'outside_light': {
+        'on': [
+          {
+            'image': 'outside-light-on.png',
+            'style': { 'width': '6%', 'left': '12.3%', 'top': '70.5%', 'z-index': '10' },
+          },
+          {
+            'image': 'outside-light-on.png',
+            'style': { 'width': '6%', 'left': '21.2%', 'top': '70.5%', 'z-index': '10' },
+          },
+          {
+            'image': 'outside-light-on.png',
+            'style': { 'width': '6%', 'left': '42.8%', 'top': '70.5%', 'z-index': '10' },
+          },
+        ],
+        'off': [
+          {
+            'image': 'outside-light-off.png',
+            'style': { 'width': '6%', 'left': '12.3%', 'top': '70.5%', 'z-index': '10' },
+          },
+          {
+            'image': 'outside-light-off.png',
+            'style': { 'width': '6%', 'left': '21.2%', 'top': '70.5%', 'z-index': '10' },
+          },
+          {
+            'image': 'outside-light-off.png',
+            'style': { 'width': '6%', 'left': '42.8%', 'top': '70.5%', 'z-index': '10' },
+          },
+        ],
+      },
+      'downstairs_light': {
+        'on': [
+        ],
+        'off': [
+        ]
+      },
+      'upstairs_light': {
+        'on': [
+          {
+            'image': 'window-light.png',
+            'style': { 'width': '4.5%', 'left': '15.5%', 'top': '53.6%', 'z-index': '10' },
+          },
+          {
+            'image': 'window-light.png',
+            'style': { 'width': '4.5%', 'left': '19.5%', 'top': '53.6%', 'z-index': '10' },
+          },
+          {
+            'image': 'window-light.png',
+            'style': { 'width': '4.5%', 'left': '42.3%', 'top': '53.6%', 'z-index': '10' },
+          },
+        ],
+        'off': [
+          {
+            'image': 'window-dark.png',
+            'style': { 'width': '4.5%', 'left': '15.5%', 'top': '53.6%', 'z-index': '10' },
+          },
+          {
+            'image': 'window-dark.png',
+            'style': { 'width': '4.5%', 'left': '19.5%', 'top': '53.6%', 'z-index': '10' },
+          },
+          {
+            'image': 'window-dark.png',
+            'style': { 'width': '4.5%', 'left': '42.3%', 'top': '53.6%', 'z-index': '10' },
+          },
+        ]
+      },
+      'car': {
+        'home': [
+          {
+            'image': 'car.png',
+            'style': { 'width': '11%', 'left': '55.2%', 'top': '72%', 'z-index': '10' },
+          },
+        ],
+      },
+      'car2': {
+        'home': [
+          {
+            'image': 'car.png',
+            'style': { 'width': '11%', 'left': '67.2%', 'top': '72%', 'z-index': '10' },
+          },
+        ],
+      },
+      'car3': {
+        'home': [
+          {
+            'image': 'car.png',
+            'style': { 'width': '11%', 'left': '84%', 'top': '72%', 'z-index': '10' },
+          },
+        ],
+      },
+      'sprinkler': {
+        'on': [
+          {
+            'image': 'sprinkler-on.png',
+            'style': { 'width': '6%', 'left': '18%', 'top': '74%', 'z-index': '10' },
+          },
+          {
+            'image': 'sprinkler-on.png',
+            'style': { 'width': '6%', 'left': '40%', 'top': '78%', 'z-index': '10' },
+          },
+        ],
+        'off': [
+          {
+            'image': 'sprinkler-off.png',
+            'style': { 'width': '6%', 'left': '18%', 'top': '74%', 'z-index': '10' },
+          },
+          {
+            'image': 'sprinkler-off.png',
+            'style': { 'width': '6%', 'left': '40%', 'top': '78%', 'z-index': '10' },
+          },
+        ],
+      },
+    },
+  },
 };
