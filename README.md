@@ -104,8 +104,8 @@ The following themes and overlays are currently supported:
 
 | Image | Theme | Overlays |
 :------:|:-----:|:---------:
-![thumb](images/structure.png&s=100) | two_story_with_garage | door, garage, outside_light, upstairs_light, downstairs_light, car, sprinkler
-![thumb](images/ranch_home.png&s=100) | ranch_with_three_stall_garage | door, garage, garage2, outside_light, upstairs_light, downstairs_light(not implemented), car, car2, car3, sprinkler
+![thumb](images/structure.png?s=100) | two_story_with_garage | door, garage, outside_light, upstairs_light, downstairs_light, car, sprinkler
+![thumb](images/ranch_home.png?s=100) | ranch_with_three_stall_garage | door, garage, garage2, outside_light, upstairs_light, downstairs_light(not implemented), car, car2, car3, sprinkler
 
 These states are supported by the overlays:
 
