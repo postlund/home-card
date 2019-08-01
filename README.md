@@ -102,9 +102,10 @@ Both the weather and resources areas are optional and will not displayed if omit
 
 The following themes and overlays are currently supported:
 
-| Theme | Overlays |
+| Image | Theme | Overlays |
 |------|----------|
-| two_story_with_garage | door, garage, outside_light, upstairs_light, downstairs_light, car, sprinkler
+| ![UI Editor](images/structure.png) | two_story_with_garage | door, garage, outside_light, upstairs_light, downstairs_light, car, sprinkler
+| ![UI Editor](images/ranch_home.png) | ranch_with_three_stall_garage | door, garage, garage2, outside_light, upstairs_light, downstairs_light(not implemented), car, car2, car3, sprinkler
 
 These states are supported by the overlays:
 
