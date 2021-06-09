@@ -1,12 +1,12 @@
 import { THEMES } from './themes.js';
 
-const LitElement = Object.getPrototypeOf(
-  customElements.get("ha-panel-lovelace")
-);
-const html = LitElement.prototype.html;
-const css = LitElement.prototype.css;
+import {
+  LitElement,
+  html,
+  css,
+} from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module';
 
-const VERSION = 3;
+const VERSION = 4;
 
 // From weather-card
 const fireEvent = (node, type, detail, options) => {
