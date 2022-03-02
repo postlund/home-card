@@ -1,5 +1,7 @@
 # Home Card
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+
 A quick glance of the state of your home in [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace UI.
 
 ![Demo of card](images/demo.gif)
