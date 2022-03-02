@@ -1,6 +1,5 @@
 {
   "name": "home-card",
   "render_readme": true,
-  "filename": "home-card.js",
-  "content_in_root": false
+  "filename": "home-card.js"
 }
