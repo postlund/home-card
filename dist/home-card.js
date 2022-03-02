@@ -216,7 +216,7 @@ class HomeCard extends LitElement {
   }
 
   imgPath(filename) {
-    return `/local/home-card/themes/${this.config.theme}/${filename}?v=${VERSION}`;
+    return `/local/community/home-card/themes/${this.config.theme}/${filename}?v=${VERSION}`;
   }
 
   stateObject(source, entity_id) {
