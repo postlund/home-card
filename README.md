@@ -94,6 +94,7 @@ Both the weather and resources areas are optional and will not displayed if omit
 | theme | string | **required** | Name of a theme, see [supported themes](#supported-themes)
 | background | string | transparent | Supported values: empty, `transparent`, `paper-card`
 | weather | string | optional | `weather` entity used for displaying location and temperature
+| climate | object | optional | `climate` entity used for displaying interior temperature
 | entities | object | optional | List of [entity objects](#entity-object)
 | resources | object | optional | List of [resource objects](#resource-object)
 | custom_themes | object | optional | List of [theme objects](#theme-object)
@@ -152,13 +153,20 @@ A `resource` is a simple sensor that is displayed beneath the house, e.g. a temp
 | entity | string | **required** | An entity from Home Assistant, e.g, `sensor.water_usage`
 | icon | string | optional | Override icon to use, e.g. `mdi:car`
 | unit_of_measurement | string | optional | Override unit of measurement, e.g. `lux`
+| state_map | map | optional | Key-value map of state (in Home Assistant) to overlay state
 
 A simple example of a resource object in yaml looks like this:
 
 ```yaml
-- entity: sensor.water_usage
-  icon: mdi:water
-  unit_of_measurement: liter
+resources:
+  - entity: alarm_control_panel.alarm
+    state_map:
+      armed_away: Armed
+      disarmed: Standby
+      armed_home: Home mode
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/security
 ```
 
 This object supports custom [tap and hold actions](#tap-and-hold-actions).
@@ -217,6 +225,11 @@ Simple example using basic features:
       icon: 'mdi:alarm-light'
     - entity: sensor.outside_temperature
       icon: 'mdi:thermometer'
+  climate:
+  - entity: climate.hallway
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/climate
 ```
 
 #### Using custom tap and hold actions
