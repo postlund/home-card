@@ -396,3 +396,9 @@ class HomeCard extends LitElement {
 }
 
 customElements.define('home-card', HomeCard);
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: 'home-card',
+  name: 'Home Card',
+  description: 'A graphical representation of your home with different themes',
+});
