@@ -35,7 +35,10 @@ Some things I want to add in upcoming releases:
 
 ## Install
 
-### Simple Install
+### HACS
+ Add this repository in HACS, download, and install. 
+
+### Manual Install
 
 1. Download `home-card.js`, `themes.js` and `themes` and copy them into `config/www/home-card` (create the `home-card` directory)
 
