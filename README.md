@@ -38,43 +38,6 @@ Some things I want to add in upcoming releases:
 ### HACS
  Add this repository in HACS, download, and install. 
 
-### Manual Install
-
-1. Download `home-card.js`, `themes.js` and `themes` and copy them into `config/www/home-card` (create the `home-card` directory)
-
-2. Add a reference to `home-card/home-card.js` inside your `ui-lovelace.yaml`
-
-  ```yaml
-  resources:
-    - url: /local/home-card/home-card.js?v=0
-      type: module
-  ```
-
-### Git Install
-
-1. Clone this repository into your `www`-directory: `git clone https://github.com/postlund/home-card.git`
-
-2. Add a reference to `home-card/home-card.js` inside your `ui-lovelace.yaml`
-
-  ```yaml
-  resources:
-    - url: /local/home-card/home-card.js?v=0
-      type: module
-  ```
-
-### Custom updater
-
-Not using this yet...
-
-## Updating
-
-If you...
-
-* manually copied the files, just download the latest files and overwrite what you already have
-* cloned the repository from Github, just do `git pull` to update
-
-... and increase `?v=X` to `?vX+1`.
-
 ## Using the card
 
 ### Card layout
