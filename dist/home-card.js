@@ -6,7 +6,13 @@ import {
   css,
 } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module';
 
-const VERSION = 4;
+const VERSION = 4.1;
+
+console.info(
+  `%c  HOME-CARD   \n%c  Version ${VERSION}       `,
+  'color: orange; font-weight: bold; background: black',
+  'color: white; font-weight: bold; background: dimgray'
+);
 
 // From weather-card
 const fireEvent = (node, type, detail, options) => {
