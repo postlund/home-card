@@ -4,7 +4,7 @@ import {
   LitElement,
   html,
   css,
-} from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module';
+} from 'https://unpkg.com/lit-element@3.3.1/lit-element.js?module';
 
 const VERSION = 4.1;
 
