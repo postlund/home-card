@@ -6,7 +6,13 @@ import {
   css,
 } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module';
 
-const VERSION = 4;
+const VERSION = 4.1;
+
+console.info(
+  `%c  HOME-CARD   \n%c  Version ${VERSION}       `,
+  'color: orange; font-weight: bold; background: black',
+  'color: white; font-weight: bold; background: dimgray'
+);
 
 // From weather-card
 const fireEvent = (node, type, detail, options) => {
@@ -85,8 +91,9 @@ class HomeCard extends LitElement {
 
   make_content() {
     var weather = "";
+    var climate = "";
     var resources = "";
-
+    
     if (this.config.weather) {
       var weatherObj = this.stateObject('weather', this.config.weather);
       weather = html `
@@ -97,6 +104,13 @@ class HomeCard extends LitElement {
                      ${weatherObj.attributes.temperature}${this.hass.config.unit_system.temperature}
                    </span>
                   </div>`;
+    }
+    
+    if (this.config.climate) {
+      climate = html `
+                 <div id="weather">
+                   ${this.config.climate.map(climate => this.make_climate(climate))}
+                 </div>`;
     }
 
     if (this.config.resources) {
@@ -109,6 +123,7 @@ class HomeCard extends LitElement {
     return html `
             <div id="root">
               ${weather}
+              ${climate}
               <div id="house">
                 <img id="house-image" src="${this.imgPath(this.theme.house)}" />
                 ${this.make_entities()}
@@ -117,18 +132,37 @@ class HomeCard extends LitElement {
             </div>
       `;
   }
+  
+  make_climate(climate) {
+    var climateObj = this.stateObject('climate', climate.entity);
+      
+    return html `
+            <span id="weather-info">
+                     <span @mousedown="${ev => this._down(climate)}"
+                        @touchstart="${ev => this._down(climate)}"
+                        @mouseup="${ev => this._up(climate, true)}">
+                     ${"Interior "}
+                     ${climateObj.attributes.current_temperature}${this.hass.config.unit_system.temperature}
+                   </span>
+    `;
+  }
 
   make_resource(resource) {
     var stateObj = this.stateObject('resources', resource.entity);
+    var state = stateObj.state;
+    if (resource.state_map && stateObj.state in resource.state_map) {
+        state = resource.state_map[stateObj.state];
+      }
+      
     return html `
             <span @mousedown="${ev => this._down(resource)}"
                   @touchstart="${ev => this._down(resource)}"
-                  @mouseup="${ev => this._up(resource, false)}">
+                  @mouseup="${ev => this._up(resource, true)}">
               <span class="icon">
                 <ha-icon icon="${resource.icon || this.get_attribute(stateObj, 'icon', 'mdi:help-rhombus')}" />
               </span>
-              <span>${Math.round(stateObj.state) || stateObj.state}</span>
-                <span>${resource.unit_of_measurement || this.get_attribute(stateObj, 'unit_of_measurement', '')}</span>
+              <span>${Math.round(state) || state}</span>
+                <span>${resource.unit_of_measurement || this.get_attribute(stateObj, 'unit_of_measurement', '')}</span>
               </span>
             </span>
     `;
@@ -188,7 +222,7 @@ class HomeCard extends LitElement {
   }
 
   imgPath(filename) {
-    return `/local/home-card/themes/${this.config.theme}/${filename}?v=${VERSION}`;
+    return `/local/community/home-card/themes/${this.config.theme}/${filename}?v=${VERSION}`;
   }
 
   stateObject(source, entity_id) {
@@ -368,3 +402,9 @@ class HomeCard extends LitElement {
 }
 
 customElements.define('home-card', HomeCard);
+window.customCards = window.customCards || [];
+window.customCards.push({
+  type: 'home-card',
+  name: 'Home Card',
+  description: 'A graphical representation of your home with different themes',
+});

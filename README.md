@@ -1,5 +1,7 @@
 # Home Card
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+
 A quick glance of the state of your home in [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace UI.
 
 ![Demo of card](images/demo.gif)
@@ -33,42 +35,8 @@ Some things I want to add in upcoming releases:
 
 ## Install
 
-### Simple Install
-
-1. Download `home-card.js`, `themes.js` and `themes` and copy them into `config/www/home-card` (create the `home-card` directory)
-
-2. Add a reference to `home-card/home-card.js` inside your `ui-lovelace.yaml`
-
-  ```yaml
-  resources:
-    - url: /local/home-card/home-card.js?v=0
-      type: module
-  ```
-
-### Git Install
-
-1. Clone this repository into your `www`-directory: `git clone https://github.com/postlund/home-card.git`
-
-2. Add a reference to `home-card/home-card.js` inside your `ui-lovelace.yaml`
-
-  ```yaml
-  resources:
-    - url: /local/home-card/home-card.js?v=0
-      type: module
-  ```
-
-### Custom updater
-
-Not using this yet...
-
-## Updating
-
-If you...
-
-* manually copied the files, just download the latest files and overwrite what you already have
-* cloned the repository from Github, just do `git pull` to update
-
-... and increase `?v=X` to `?vX+1`.
+### HACS
+ Add this repository in HACS, download, and install. 
 
 ## Using the card
 
@@ -94,6 +62,7 @@ Both the weather and resources areas are optional and will not displayed if omit
 | theme | string | **required** | Name of a theme, see [supported themes](#supported-themes)
 | background | string | transparent | Supported values: empty, `transparent`, `paper-card`
 | weather | string | optional | `weather` entity used for displaying location and temperature
+| climate | object | optional | `climate` entity used for displaying interior temperature
 | entities | object | optional | List of [entity objects](#entity-object)
 | resources | object | optional | List of [resource objects](#resource-object)
 | custom_themes | object | optional | List of [theme objects](#theme-object)
@@ -102,9 +71,10 @@ Both the weather and resources areas are optional and will not displayed if omit
 
 The following themes and overlays are currently supported:
 
-| Theme | Overlays |
-|------|----------|
-| two_story_with_garage | door, garage, outside_light, upstairs_light, downstairs_light, car, sprinkler
+| Image | Theme | Overlays |
+:------:|:-----:|:---------:
+![thumb](images/structure.png?s=100) | two_story_with_garage | door, garage, outside_light, upstairs_light, downstairs_light, car, sprinkler
+![thumb](images/ranch_home.png?s=100) | ranch_with_three_stall_garage | door, garage, garage2, outside_light, upstairs_light, downstairs_light(not implemented), car, car2, car3, sprinkler
 
 These states are supported by the overlays:
 
@@ -151,13 +121,20 @@ A `resource` is a simple sensor that is displayed beneath the house, e.g. a temp
 | entity | string | **required** | An entity from Home Assistant, e.g, `sensor.water_usage`
 | icon | string | optional | Override icon to use, e.g. `mdi:car`
 | unit_of_measurement | string | optional | Override unit of measurement, e.g. `lux`
+| state_map | map | optional | Key-value map of state (in Home Assistant) to overlay state
 
 A simple example of a resource object in yaml looks like this:
 
 ```yaml
-- entity: sensor.water_usage
-  icon: mdi:water
-  unit_of_measurement: liter
+resources:
+  - entity: alarm_control_panel.alarm
+    state_map:
+      armed_away: Armed
+      disarmed: Standby
+      armed_home: Home mode
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/security
 ```
 
 This object supports custom [tap and hold actions](#tap-and-hold-actions).
@@ -216,6 +193,11 @@ Simple example using basic features:
       icon: 'mdi:alarm-light'
     - entity: sensor.outside_temperature
       icon: 'mdi:thermometer'
+  climate:
+  - entity: climate.hallway
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/climate
 ```
 
 #### Using custom tap and hold actions
